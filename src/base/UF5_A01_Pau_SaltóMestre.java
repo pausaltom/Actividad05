@@ -13,7 +13,8 @@ public class UF5_A01_Pau_SaltóMestre {
     public static void main(String[] args) {
         int sino = 0;
         double radio;
-        
+
+        do {
             do {
                 radio = aleatorio();
 
@@ -23,18 +24,30 @@ public class UF5_A01_Pau_SaltóMestre {
 
             } while (radio >= 0.01);
 
+            System.out.println("De que manera desea ordenar los circulos: "
+                    + "\n 1-ascendente \n 2-descendente");
+            var respuesta = leerScanner.nextInt();
 
-           
-            
+            switch (respuesta) {
+                case 1:
+                    listaCirculos.sort(Comparator.comparingDouble(Circulo::getRadio));
+                    break;
+                case 2:
+                    listaCirculos.sort(Comparator.comparingDouble(Circulo::getRadio).reversed());
+                    break;
+
+            }
+            int c = 0;
             for (Circulo lista : listaCirculos) {
-               
+                System.out.println("Circulo " + c + " :");
                 System.out.println(lista.toString());
-                
+                c++;
             }
 
-            
+            System.out.println("Desea continuar: \n 1-si \n 2-no");
+            sino = leerScanner.nextInt();
 
-        
+        } while (sino == 1);
 
     }
 
